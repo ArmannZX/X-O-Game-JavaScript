@@ -40,36 +40,56 @@ MainBox.addEventListener("mousedown", function (event) {
 
 function ToWIN(Winner) {
   if (
-    (Tables.Table1.innerHTML == Winner &&
-      Tables.Table2.innerHTML == Winner &&
-      Tables.Table3.innerHTML == Winner) ||
-    (Tables.Table4.innerHTML == Winner &&
-      Tables.Table5.innerHTML == Winner &&
-      Tables.Table6.innerHTML == Winner) ||
-    (Tables.Table7.innerHTML == Winner &&
-      Tables.Table8.innerHTML == Winner &&
-      Tables.Table9.innerHTML == Winner) ||
-    (Tables.Table1.innerHTML == Winner &&
-      Tables.Table4.innerHTML == Winner &&
-      Tables.Table7.innerHTML == Winner) ||
-    (Tables.Table2.innerHTML == Winner &&
-      Tables.Table5.innerHTML == Winner &&
-      Tables.Table8.innerHTML == Winner) ||
-    (Tables.Table3.innerHTML == Winner &&
-      Tables.Table6.innerHTML == Winner &&
-      Tables.Table9.innerHTML == Winner) ||
-    (Tables.Table1.innerHTML == Winner &&
-      Tables.Table5.innerHTML == Winner &&
-      Tables.Table9.innerHTML == Winner) ||
-    (Tables.Table3.innerHTML == Winner &&
-      Tables.Table5.innerHTML == Winner &&
-      Tables.Table7.innerHTML == Winner)
+    Tables.Table1.innerHTML == Winner &&
+    Tables.Table2.innerHTML == Winner &&
+    Tables.Table3.innerHTML == Winner
   ) {
-    window.alert("'" + Winner + "' Has Won ");
-    for (i = 0; i < B.length; i++) {
-      B[i].isClicked = true;
-    }
+    CallWin(Winner, Tables.Table1, Tables.Table2, Tables.Table3);
   } else if (
+    Tables.Table4.innerHTML == Winner &&
+    Tables.Table5.innerHTML == Winner &&
+    Tables.Table6.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table4, Tables.Table5, Tables.Table6);
+  } else if (
+    Tables.Table7.innerHTML == Winner &&
+    Tables.Table8.innerHTML == Winner &&
+    Tables.Table9.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table7, Tables.Table8, Tables.Table9);
+  } else if (
+    Tables.Table1.innerHTML == Winner &&
+    Tables.Table4.innerHTML == Winner &&
+    Tables.Table7.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table1, Tables.Table4, Tables.Table7);
+  } else if (
+    Tables.Table2.innerHTML == Winner &&
+    Tables.Table5.innerHTML == Winner &&
+    Tables.Table8.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table2, Tables.Table5, Tables.Table8);
+  } else if (
+    Tables.Table3.innerHTML == Winner &&
+    Tables.Table6.innerHTML == Winner &&
+    Tables.Table9.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table3, Tables.Table6, Tables.Table9);
+  } else if (
+    Tables.Table1.innerHTML == Winner &&
+    Tables.Table5.innerHTML == Winner &&
+    Tables.Table9.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table1, Tables.Table5, Tables.Table9);
+  } else if (
+    Tables.Table3.innerHTML == Winner &&
+    Tables.Table5.innerHTML == Winner &&
+    Tables.Table7.innerHTML == Winner
+  ) {
+    CallWin(Winner, Tables.Table3, Tables.Table5, Tables.Table7);
+  }
+
+  if (
     Tables.Table1.innerHTML !== "" &&
     Tables.Table2.innerHTML !== "" &&
     Tables.Table3.innerHTML !== "" &&
@@ -82,6 +102,16 @@ function ToWIN(Winner) {
   ) {
     window.alert("TIE");
   }
+}
+
+function CallWin(Winner, HighlightTable1, HighlightTable2, HighlightTable3) {
+  window.alert("'" + Winner + "'  Won ");
+  for (i = 0; i < B.length; i++) {
+    B[i].isClicked = true;
+  }
+  HighlightTable1.classList.toggle("HighlightWinner");
+  HighlightTable2.classList.toggle("HighlightWinner");
+  HighlightTable3.classList.toggle("HighlightWinner");
 }
 
 Reset.addEventListener("click", function () {
@@ -99,4 +129,14 @@ Reset.addEventListener("click", function () {
   Tables.Table7.innerHTML = "";
   Tables.Table8.innerHTML = "";
   Tables.Table9.innerHTML = "";
+
+  Tables.Table1.classList.remove("HighlightWinner");
+  Tables.Table2.classList.remove("HighlightWinner");
+  Tables.Table3.classList.remove("HighlightWinner");
+  Tables.Table4.classList.remove("HighlightWinner");
+  Tables.Table5.classList.remove("HighlightWinner");
+  Tables.Table6.classList.remove("HighlightWinner");
+  Tables.Table7.classList.remove("HighlightWinner");
+  Tables.Table8.classList.remove("HighlightWinner");
+  Tables.Table9.classList.remove("HighlightWinner");
 });
